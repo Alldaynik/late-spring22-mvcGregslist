@@ -21,6 +21,7 @@ export class HousesController{
  constructor(){
    console.log('Houses controller loaded', ProxyState.houses);
    ProxyState.on('houses', _drawHouses)
+   this.getHouses()
    this.viewHouses()
  }
 
@@ -30,7 +31,11 @@ export class HousesController{
   document.getElementById('form-body').innerHTML = form
   _drawHouses()
  }
- createHouse(){
+
+ async getHouses(){
+   await houseService.getHouses()
+ }
+ async createHouse(){
    window.event.preventDefault()
    let form = window.event.target
    console.log('form submitted', form)
@@ -43,9 +48,11 @@ export class HousesController{
     sqFeet: form.sqFeet.value,
     price: form.price.value,
     description: form.description.value,
-    imgURL: form.imgURL.value,
+    imgUrl: form.imgUrl.value,
 
    }
+
+
    console.log('the new cripo', houseData)
   houseService.createHouse(houseData)
   form.reset()

@@ -16,7 +16,12 @@ export class CarsController{
   constructor(){
     console.log('cars controller loaded', ProxyState.cars);
     ProxyState.on('cars', _drawCars)
+    this.getCars()
     this.viewCars()
+  }
+
+  async getCars(){
+    await carsService.getCars()
   }
 
   // NOTE view cars handles drawing the cars and injecting the new car form
@@ -28,7 +33,7 @@ export class CarsController{
   }
 
 
-  createCar(){
+  async createCar(){
     // NOTE prevent default keeps the form submit event from reloading the page
     window.event.preventDefault()
     let form = window.event.target
@@ -51,6 +56,13 @@ export class CarsController{
     // NOTE don't look at boostrap docs they give a way that doesn't work as good look at this
     // it's best to close the modal here once the method is complete, closing it with the button click will not work later when things get more complicated
     bootstrap.Modal.getOrCreateInstance(document.getElementById('form-modal')).hide()
+  }
+
+  openCreateForm(){
+    let form = getCarForm()
+    document.getElementById('form-body').innerHTML = form
+    bootstrap.Modal.getOrCreateInstance(document.getElementById('form-modal')).show()
+
   }
 
   deleteCar(id){

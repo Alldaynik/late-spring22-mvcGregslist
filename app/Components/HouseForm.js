@@ -38,7 +38,7 @@ export function getHouseForm(){
             </div>
           </div>
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary px-3 py-2" title="create a houe"><i class="mdi mdi-plus"></i>Create</button>
+          <button type="submit" class="btn btn-primary px-3 py-2" title="create a house"><i class="mdi mdi-plus"></i>Create</button>
   
         
         </form>

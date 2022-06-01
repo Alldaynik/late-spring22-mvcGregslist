@@ -1,44 +1,44 @@
 export function getCarForm(){
   return `
   
-  <form class="mb-3 col-12 bg-white p-3 mt-4" onsubmit="app.carsController.createCar()">
+  <form class="mb-3 col-12 bg-white p-3 mt-4" onsubmit="app.carsController.${car.id ? `updateCar('${car.id}')` : 'createCar()'}">
               <h3> List a Car </h3>
                 <div class="row">
                   <div class="col-3 mb-2">
                     <label for="" class="form-label">Make</label>
-                    <input required type="text" name="make" id="make" placeholder="Enter a car Make..." maxlength="15"
+                    <input required type="text" name="make" id="make" value="${this.make || ''}" placeholder="Enter a car Make..." maxlength="15"
                       minlength="3" class="form-control" placeholder="" aria-describedby="helpId"
                       title="please enter a model">
                   </div>
                   <div class="col-3 mb-2">
                     <label for="" class="form-label">Model</label>
-                    <input required type="text" name="model" id="model" placeholder="Enter a car Model..."
-                      class="form-control" placeholder="" aria-describedby="helpId">
+                    <input required type="text" name="model" id="model" value="${this.model || ''}" placeholder="Enter a car Model..."
+                      class="form-control" placeholder="" aria-described by="helpId">
                   </div>
                   <div class="col-3 mb-2">
                     <label for="" class="form-label">Year</label>
-                    <input required type="number" name="year" id="year" value="2000" min="1960" max="2023"
+                    <input required type="number" name="year" id="year" value="${this.year || 2000}" min="1960" max="2023"
                       class="form-control" placeholder="" aria-describedby="helpId">
                   </div>
                   <div class="col-3 mb-2">
                     <label for="" class="form-label">Price</label>
-                    <input required type="number" name="price" id="price" value="1" min="1" class="form-control"
+                    <input required type="number" name="price" id="price" value="${this.price || 1}" min="1" class="form-control"
                       placeholder="" aria-describedby="helpId">
                   </div>
                   <div class="col-12 mb-2">
                     <label for="" class="form-label">description</label>
-                    <input required type="text" name="description" id="description"
+                    <input required type="text" name="description" id="description" value="${this.description || ''}"
                       placeholder="Tell us about the car..." class="form-control" maxlength="75" placeholder=""
                       aria-describedby="helpId">
                   </div>
                   <div class="col-6">
                     <label for="" class="form-label">Image Url</label>
-                    <input required type="text" name="imgUrl" id="imgUrl" class="form-control" placeholder=""
+                    <input required type="text" name="imgUrl" id="imgUrl" value="${this.imgURL || ''}"class="form-control" placeholder=""
                       aria-describedby="helpId">
                   </div>
                   <div class="col-6">
                     <label for="" class="form-label">Color</label>
-                    <input required type="color" name="color" id="color" class="form-control" placeholder=""
+                    <input required type="color" name="color" id="color" value="${this.color || "#ffff"}" class="form-control" placeholder=""
                       aria-describedby="helpId">
                   </div>
                 </div>
